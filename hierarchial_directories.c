@@ -67,12 +67,27 @@ void cdup()
     curr = curr->p;
 }
 
-void rmdir()
+void rm(bool d)
 {
-}
-
-void rm()
-{
+    printf("Enter name of file or directory to delete\n");
+    char name[128];
+    scanf("%s", name);
+    for (int i = 0; i < curr->i; i++)
+    {
+        if (!strcmp(curr->c[i]->name, name) && ((d && curr->c[i]->isDir == true) || (!d && curr->c[i]->isDir == false)))
+        {
+            int t = i;
+            while (t < (curr->i) - 1)
+            {
+                curr->c[t] = curr->c[t + 1];
+                t++;
+            }
+            curr->i = (curr->i) - 1;
+            printf("Successfully deleted.\n");
+            return;
+        }
+    }
+    printf("Not found\n");
 }
 
 void main()
@@ -86,7 +101,7 @@ void main()
     curr = head;
     while (true)
     {
-        printf("\n\nYou are in %s directory.\nEnter 1 to show everything in this directory\nEnter 2 to change directory\nEnter 3 to go to parent directory\nEnter 4 to add new file\nEnter 5 to delete file\nEnter 6 to create new directory\nEnter 7 to delete directory\nEnter anything else to exit\n", curr->name);
+        printf("\n\nYou are in %s directory.\nEnter 1 to show everything in this directory\nEnter 2 to change directory\nEnter 3 to go to parent directory\nEnter 4 to add new file\nEnter 5 to delete file\nEnter 6 to create new directory\nEnter 7 to delete directory\nEnter 8 to exit\n", curr->name);
         scanf("%d", &in);
         switch (in)
         {
@@ -103,13 +118,13 @@ void main()
             touch(false);
             break;
         case 5:
-            rm();
+            rm(false);
             break;
         case 6:
             touch(true);
             break;
         case 7:
-            rmdir();
+            rm(true);
             break;
         default:
             exit(0);
