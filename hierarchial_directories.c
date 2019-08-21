@@ -16,7 +16,7 @@ void ls()
 {
     if (curr->i == 0)
     {
-        printf("Empty folder\n");
+        printf("Empty directory\n");
         return;
     }
     for (int i = 0; i < curr->i; i++)
@@ -43,10 +43,28 @@ void touch(bool d)
 
 void cd()
 {
+    printf("Enter directory name\n");
+    char dname[128];
+    scanf("%s", dname);
+    for (int i = 0; i < curr->i; i++)
+    {
+        if (!strcmp(curr->c[i]->name, dname) && curr->c[i]->isDir == true)
+        {
+            curr = curr->c[i];
+            return;
+        }
+    }
+    printf("Directory not present.\n");
 }
 
 void cdup()
 {
+    if (curr->p == NULL)
+    {
+        printf("You are at the root directory\n");
+        return;
+    }
+    curr = curr->p;
 }
 
 void rmdir()
