@@ -32,11 +32,18 @@ void removeFile()
     char fname[128];
     scanf("%s", fname);
     struct files *temp = head;
+    if (strcmp(temp->name, fname) == 0)
+    {
+        head = temp->p;
+        printf("File deleted.\n");
+        return;
+    }
     while (temp != NULL && temp->p != NULL)
     {
-        if (strcmp(temp->p->name, fname) == -1)
+        if (strcmp(temp->p->name, fname) == 0)
         {
             temp->p = temp->p->p;
+            printf("File deleted.\n");
             return;
         }
         temp = temp->p;
