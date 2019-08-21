@@ -28,14 +28,14 @@ void ls()
     }
 }
 
-void touch()
+void touch(bool d)
 {
     printf("Enter filename\n");
     char fname[128];
     scanf("%s", fname);
     struct node *temp = (struct node *)malloc(sizeof(struct node));
     strcpy(temp->name, fname);
-    temp->isDir = false;
+    temp->isDir = d;
     temp->p = curr;
     curr->c[curr->i] = temp;
     curr->i = (curr->i) + 1;
@@ -46,10 +46,6 @@ void cd()
 }
 
 void cdup()
-{
-}
-
-void mkdir()
 {
 }
 
@@ -86,13 +82,13 @@ void main()
             cdup();
             break;
         case 4:
-            touch();
+            touch(false);
             break;
         case 5:
             rm();
             break;
         case 6:
-            mkdir();
+            touch(true);
             break;
         case 7:
             rmdir();
