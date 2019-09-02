@@ -53,11 +53,11 @@ void main()
     int res_left[r];
     printf("Enter resources currently NEEDED by %d processes\n", n);
     for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < r; j++)
             scanf("%d", (*(res_needed + i) + j));
     printf("Enter resources currently HELD by %d processes\n", n);
     for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < r; j++)
             scanf("%d", (*(res_allocated + i) + j));
     printf("Enter amount of resources that are left\n");
     for (int i = 0; i < r; i++)

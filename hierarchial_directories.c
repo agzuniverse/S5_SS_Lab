@@ -30,7 +30,10 @@ void ls()
 
 void touch(bool d)
 {
-    printf("Enter filename\n");
+    if (d)
+        printf("Enter directory name\n");
+    else
+        printf("Enter filename\n");
     char fname[128];
     scanf("%s", fname);
     struct node *temp = (struct node *)malloc(sizeof(struct node));
