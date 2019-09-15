@@ -23,7 +23,7 @@ void scan(int *locs, int n, int start, int max)
     if (temp[0] > start)
         printf("Average movement of head using SCAN: %.3f\n", (float)(abs(temp[n - 1] - start) / n));
     else
-        printf("Average movement of head using SCAN: %.3f\n", (float)(max - temp[0] + max - start));
+        printf("Average movement of head using SCAN: %.3f\n", (float)((max - temp[0] + max - start) / n));
 }
 
 void cscan(int *locs, int n, int start, int max)
@@ -40,7 +40,7 @@ void cscan(int *locs, int n, int start, int max)
             if (locs[i] > start)
                 break;
         i -= 1;
-        printf("Average movement of head using C-SCAN: %.3f\n", (float)(max - start + max + locs[i]));
+        printf("Average movement of head using C-SCAN: %.3f\n", (float)((max - start + max + locs[i]) / n));
     }
 }
 
